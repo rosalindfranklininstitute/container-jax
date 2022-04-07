@@ -21,6 +21,7 @@ latest:
   v0.3.1: sha256:ca9517b77cabb04e797aeef93e754f7edc88f6b42dd06ac36c2109f7812d2382
 tags:
   v0.3.1: sha256:ca9517b77cabb04e797aeef93e754f7edc88f6b42dd06ac36c2109f7812d2382
+  v0.3.1-slim: sha256:d0ef991b2e18a55b6a2285cfd8c613b4d401d6c544d36452059f3d15b6701f2c
 features:
   gpu: true
 aliases:
