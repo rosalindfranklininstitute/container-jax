@@ -60,6 +60,7 @@ RUN pip install --no-cache-dir --upgrade \
 
 # Copy compiled jax from the build image and install
 COPY --from=build /usr/local/jax /usr/local/jax
+COPY --from=build /usr/local/cuda/bin/ptxas /usr/local/cuda/bin/ptxas
 WORKDIR /usr/local/jax
 RUN pip install --no-cache-dir --upgrade dist/*.whl && \
     rm -rf dist/*.whl && \
