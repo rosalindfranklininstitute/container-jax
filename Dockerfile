@@ -52,7 +52,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
     apt-get install --no-install-recommends -y python cython3 python3 python3-pip && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10 && \
-    apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+    apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install python packages
 RUN pip install --no-cache-dir --upgrade \
