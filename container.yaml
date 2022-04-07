@@ -18,10 +18,9 @@ url: https://quay.io/rosalindfranklininstitute/jax
 maintainer: 'Joss Whittle'
 description: Python environment with jax and cuda installed.
 latest:
-  v0.3.1: sha256:ca9517b77cabb04e797aeef93e754f7edc88f6b42dd06ac36c2109f7812d2382
+  v0.3.1: sha256:2e77467e0210f8723e350c727ff82387a235d6b69f1ae0a8ef9d5e178841c76c
 tags:
-  v0.3.1: sha256:ca9517b77cabb04e797aeef93e754f7edc88f6b42dd06ac36c2109f7812d2382
-  v0.3.1-slim: sha256:2e77467e0210f8723e350c727ff82387a235d6b69f1ae0a8ef9d5e178841c76c
+  v0.3.1: sha256:2e77467e0210f8723e350c727ff82387a235d6b69f1ae0a8ef9d5e178841c76c
 features:
   gpu: true
 aliases:
