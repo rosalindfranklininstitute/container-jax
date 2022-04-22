@@ -12,15 +12,14 @@
 # either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-FROM quay.io/rosalindfranklininstitute/jax:v0.3.1-devel as build
-
-FROM nvidia/cuda:11.5.1-cudnn8-runtime-ubuntu20.04
+FROM nvidia/cuda:11.5.1-cudnn8-devel-ubuntu20.04 as build
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/compat/"
 
-# Install runtime packages
+# Install packages and register python3 as python
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
-    apt-get install --no-install-recommends -y git python cython3 python3 python3-pip && \
+    apt-get install --no-install-recommends -y \
+      g++ git wget python cython3 python3 python3-dev python3-pip && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10 && \
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
@@ -29,14 +28,17 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN pip install --no-cache-dir --upgrade \
         numpy>=1.22.2 six wheel mock pytest pytest-cov PyYAML coverage
 
-# Copy compiled jax from the build image and install
-COPY --from=build /usr/local/jax /usr/local/jax
-COPY --from=build /usr/local/cuda/bin/ptxas /usr/local/cuda/bin/ptxas
+# Install jax from source
 WORKDIR /usr/local/jax
-RUN pip install --no-cache-dir --upgrade dist/*.whl opt_einsum typing_extensions && \
-    rm -rf dist/*.whl && \
+RUN git clone --branch jax-v0.3.1 --depth 1 https://github.com/google/jax.git . && \
+    python build/build.py  \
+        --enable_cuda \
+        --cuda_path='/usr/local/cuda' \
+        --cudnn_path='/usr' \
+        --cuda_version='11.5' \
+        --cudnn_version='8' && \
+    pip install --no-cache-dir --upgrade dist/*.whl && \
     pip install -e . && \
     rm -rf /root/.cache/* &&  \
     rm -rf /tmp/* && \
     find /usr/lib/python3.*/ -name 'tests' -exec rm -rf '{}' +
-WORKDIR /
