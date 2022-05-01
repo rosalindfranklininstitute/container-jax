@@ -20,10 +20,9 @@ export ROOTDIR="/bask/projects/f/ffnr0871-rfi-test/pje39613"
 export SINGULARITY_CACHEDIR="$ROOTDIR/.singularity-cache"
 
 export JOBDIR="$ROOTDIR/container-jax/examples/baskerville/build-mpi4jax"
-
 export WHEELSDIR="$JOBDIR/wheels"
 
-export MPIDIR="`dirname $(which mpicc)`"
+export MPIDIR="`dirname $(which mpicc)`/../"
 export SINGULARITYENV_PREPEND_PATH="/usr/local/mpi/bin:/usr/local/mpi"
 export SINGULARITYENV_PREPEND_LD_LIBRARY_PATH="/usr/local/mpi/lib64:/usr/local/mpi/lib:/usr/local/mpi"
 

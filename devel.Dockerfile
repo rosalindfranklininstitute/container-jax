@@ -39,6 +39,12 @@ RUN git clone --branch jax-v0.3.1 --depth 1 https://github.com/google/jax.git . 
         --cudnn_version='8' && \
     pip install --no-cache-dir --upgrade dist/*.whl && \
     pip install -e . && \
+    pip install --no-cache-dir --upgrade \
+        h5py scipy>=1.8.0 scikit-image>=0.19.2 imageio tqdm pandas matplotlib && \
+    pip install --no-cache-dir --upgrade \
+        git+git://github.com/deepmind/dm-haiku.git@f25eb03a959d26c8ca97eca13cc8ca4678dd3967 && \
+    pip install --no-cache-dir --upgrade \
+        optax tensorflow tbp-nightly jupyter jupyterlab && \
     rm -rf /root/.cache/* &&  \
     rm -rf /tmp/* && \
     find /usr/lib/python3.*/ -name 'tests' -exec rm -rf '{}' +
