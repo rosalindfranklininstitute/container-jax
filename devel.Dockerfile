@@ -48,3 +48,4 @@ RUN git clone --branch jax-v0.3.1 --depth 1 https://github.com/google/jax.git . 
     rm -rf /root/.cache/* &&  \
     rm -rf /tmp/* && \
     find /usr/lib/python3.*/ -name 'tests' -exec rm -rf '{}' +
+WORKDIR/
