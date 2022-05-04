@@ -38,7 +38,7 @@ RUN pip install --no-cache-dir --upgrade /usr/local/jax/dist/*.whl opt_einsum ty
     pip install -e . && \
     pip install --no-cache-dir --upgrade h5py scipy>=1.8.0 scikit-image>=0.19.2 imageio tqdm pandas matplotlib && \
     pip install --no-cache-dir --upgrade https://github.com/deepmind/dm-haiku/archive/refs/tags/v0.0.6.zip && \
-    pip install --no-cache-dir --upgrade optax tensorflow hub tbp-nightly jupyter jupyterlab && \
+    pip install --no-cache-dir --upgrade optax hub jupyter jupyterlab && \
     rm -rf /root/.cache/* && rm -rf /tmp/* && \
     find /usr/lib/python3.*/ -name 'tests' -exec rm -rf '{}' +
 WORKDIR /

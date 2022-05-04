@@ -44,7 +44,7 @@ RUN git clone --branch jax-v0.3.1 --depth 1 https://github.com/google/jax.git . 
     pip install --no-cache-dir --upgrade \
         git+git://github.com/deepmind/dm-haiku.git@f25eb03a959d26c8ca97eca13cc8ca4678dd3967 && \
     pip install --no-cache-dir --upgrade \
-        optax tensorflow tbp-nightly jupyter jupyterlab && \
+        optax jupyter jupyterlab && \
     rm -rf /root/.cache/* &&  \
     rm -rf /tmp/* && \
     find /usr/lib/python3.*/ -name 'tests' -exec rm -rf '{}' +
