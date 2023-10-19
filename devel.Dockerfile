@@ -12,8 +12,7 @@
 # either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-FROM nvidia/cuda:11.5.1-cudnn8-devel-ubuntu20.04 as build
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/compat/"
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as build
 
 # Install packages and register python3 as python
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
