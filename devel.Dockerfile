@@ -27,18 +27,8 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN pip install --no-cache-dir --upgrade \
         numpy>=1.22.2 six wheel mock pytest pytest-cov PyYAML coverage
 
-# Install jax from source
-WORKDIR /usr/local/jax
-RUN git clone --branch jax-v0.3.1 --depth 1 https://github.com/google/jax.git . && \
-    python build/build.py  \
-        --enable_cuda \
-        --cuda_path='/usr/local/cuda' \
-        --cudnn_path='/usr' \
-        --cuda_version='11.5' \
-        --cudnn_version='8' && \
-    pip install --no-cache-dir --upgrade dist/*.whl && \
-    pip install -e . && \
-    pip install --no-cache-dir --upgrade \
+RUN pip install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+RUN pip install --no-cache-dir --upgrade \
         h5py scipy>=1.8.0 scikit-image>=0.19.2 imageio tqdm pandas matplotlib && \
     pip install --no-cache-dir --upgrade \
         git+git://github.com/deepmind/dm-haiku.git@f25eb03a959d26c8ca97eca13cc8ca4678dd3967 && \
