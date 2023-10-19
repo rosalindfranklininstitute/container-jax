@@ -37,4 +37,4 @@ RUN pip install --no-cache-dir --upgrade \
     rm -rf /root/.cache/* &&  \
     rm -rf /tmp/* && \
     find /usr/lib/python3.*/ -name 'tests' -exec rm -rf '{}' +
-WORKDIR/
+WORKDIR /
