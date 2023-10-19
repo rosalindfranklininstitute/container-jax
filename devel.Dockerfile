@@ -31,7 +31,7 @@ RUN pip install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/
 RUN pip install --no-cache-dir --upgrade \
         h5py scipy>=1.8.0 scikit-image>=0.19.2 imageio tqdm pandas matplotlib && \
     pip install --no-cache-dir --upgrade \
-        git+git://github.com/deepmind/dm-haiku.git@f25eb03a959d26c8ca97eca13cc8ca4678dd3967 && \
+        dm-haiku && \
     pip install --no-cache-dir --upgrade \
         optax jupyter jupyterlab && \
     rm -rf /root/.cache/* &&  \
